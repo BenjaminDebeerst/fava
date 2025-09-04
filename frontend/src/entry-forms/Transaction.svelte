@@ -92,6 +92,8 @@
       --autocomplete-wrapper-flex="1"
     />
   </label>
+</div>
+<div class="flex-row">
   <label>
     <span class="hide-on-desktop">{_("Narration")}:</span>
     <AutocompleteInput
@@ -156,6 +158,10 @@
 
   .hide-on-desktop {
     display: none;
+  }
+
+  div :global(.narration) {
+    flex-grow: 1;
   }
 
   @media (width <= 767px) {
