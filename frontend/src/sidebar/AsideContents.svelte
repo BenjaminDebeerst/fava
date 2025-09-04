@@ -27,9 +27,6 @@
   </ul>
 {/if}
 <ul class="navigation">
-  <Link report="income_statement" name={_("Income Statement")} key="g i" />
-  <Link report="balance_sheet" name={_("Balance Sheet")} key="g b" />
-  <Link report="trial_balance" name={_("Trial Balance")} key="g t" />
   <Link report="journal" name={_("Journal")} key="g j" />
   <Link report="query" name={_("Query")} key="g q">
     {#if user_queries.length}
@@ -45,15 +42,7 @@
   <AccountSelector />
 </ul>
 <ul class="navigation">
-  <Link report="holdings" name={_("Holdings")} key="g h" />
-  <Link report="commodities" name={_("Commodities")} key="g c" />
   <Link report="documents" name={_("Documents")} key="g d" />
-  <Link
-    report="events"
-    name={_("Events")}
-    key="g E"
-    bubble={[upcoming_events_count, "info"]}
-  />
   <Link report="statistics" name={_("Statistics")} key="g s" />
 </ul>
 <ul class="navigation">
@@ -97,6 +86,19 @@
     {/each}
   </ul>
 {/if}
+<ul class="navigation">
+  <Link report="income_statement" name={_("Income Statement")} key="g i" />
+  <Link report="balance_sheet" name={_("Balance Sheet")} key="g b" />
+  <Link report="trial_balance" name={_("Trial Balance")} key="g t" />
+  <Link report="holdings" name={_("Holdings")} key="g h" />
+  <Link report="commodities" name={_("Commodities")} key="g c" />
+  <Link
+    report="events"
+    name={_("Events")}
+    key="g E"
+    bubble={[upcoming_events_count, "info"]}
+  />
+</ul>
 
 <style>
   .navigation {
