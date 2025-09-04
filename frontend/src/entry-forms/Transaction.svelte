@@ -121,6 +121,8 @@
         onSelect={autocompleteSelectPayee}
       />
     </label>
+  </div>
+  <div class="flex-row">
     <label>
       <span>{_("Narration")}:</span>
       <AutocompleteInput
@@ -192,6 +194,10 @@
     flex-grow: 1;
     flex-basis: 100px;
   }
+
+  div :global(.narration) {
+      flex-grow: 1;
+    }
 
   label > span:first-child,
   .label > span:first-child {
