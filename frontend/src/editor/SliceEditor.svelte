@@ -22,6 +22,7 @@
   import { router } from "../router.ts";
   import { reload_after_saving_entry_slice } from "../stores/editor.ts";
   import { currency_column, indent } from "../stores/fava_options.ts";
+  import { apply_to_filtered } from "./apply-last-edit.ts";
   import DeleteButton from "./DeleteButton.svelte";
   import SaveButton from "./SaveButton.svelte";
 
@@ -51,6 +52,7 @@
   let duplicated_entry = $state.raw<EditableEntry>();
 
   let saving = $state(false);
+  let apply_to_all = $state(false);
 
   async function save(event?: SubmitEvent) {
     event?.preventDefault();
@@ -61,6 +63,9 @@
         source: current_slice,
         sha256sum,
       });
+      if (apply_to_all) {
+        await apply_to_filtered();
+      }
       if ($reload_after_saving_entry_slice) {
         router.reload();
       }
@@ -139,6 +144,14 @@
       </button>
     {/if}
     <span class="spacer"></span>
+    <label
+      title={_(
+        "Also apply this edit to all entries matching the current filter",
+      )}
+    >
+      <input type="checkbox" bind:checked={apply_to_all} />
+      <span>{_("apply to all")}</span>
+    </label>
     <label>
       <input type="checkbox" bind:checked={$reload_after_saving_entry_slice} />
       <span>{_("reload")}</span>
